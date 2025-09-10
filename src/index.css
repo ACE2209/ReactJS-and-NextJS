@@ -1,3 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Quicksand", sans-serif;
+  line-height: 1.5;
+
+  color: #ebe7ef;
+  background: radial-gradient(#271937, #20043d);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  min-height: 80rem;
+}
+
 main {
   width: 90%;
   max-width: 50rem;
@@ -34,7 +55,6 @@ main h2 {
 }
 
 #core-concepts li img {
-
   width: 6rem;
   object-fit: cover;
 }
@@ -45,7 +65,6 @@ main h2 {
 
 #core-concepts li p {
   font-size: 0.9rem;
-  color: white;
 }
 
 #examples {
