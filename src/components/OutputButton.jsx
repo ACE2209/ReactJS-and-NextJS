@@ -1,6 +1,6 @@
 import MainContent from "./MainContent.jsx";
 import Header from "./Header/Header.jsx";
-import { myData } from "../../data.js";
+// import { myData } from "../../data.js";
 
 import TabButton from "./TabButton.jsx";
 
@@ -9,12 +9,15 @@ import TabButton from "./TabButton.jsx";
 // Hook bản chất là hàm tính năng được react thiết kế sẵn
 import { useState } from "react";
 
+import { myData, EXAMPLES } from "../../data.js";
+
 function Output() {
   // khi sử dụng useState bắt buộc phải gọi tại cấp cao nhất của hàm thành phần
   // ý là sẽ nằm ở ngoài chứ ko nằm trong các function nằm trong hàm Output
-  // không nằm trong cả if else 
+  // không nằm trong cả if else
   // useState();
-  const [selectedTopic, setSelectedTopic] = useState("Vui lòng click vào nút");
+  // const [selectedTopic, setSelectedTopic] = useState("Vui lòng click vào nút");
+  const [selectedTopic, setSelectedTopic] = useState("jsx");
 
   console.log(`Output duoc goi ghi nhan f5`);
   // function handleSelect() {
@@ -82,7 +85,14 @@ function Output() {
             {/* <TabButton random="Components"></TabButton> */}
           </menu>
           {/* {tabContent} */}
-          {selectedTopic}
+          {/* {selectedTopic} */}
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].desc}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </>
