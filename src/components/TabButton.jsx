@@ -6,18 +6,40 @@
 //   );
 // }
 
-export default function TabButton({children}) {
-  return (
-    <li>
-      <button>{children}</button>
-    </li>
-  );
-}
+// export default function TabButton({ children }) {
+//   // trong js tạo hàm btn để lắng nghe sự kiện button và thực hiện việc nào đó
+//   // const btn = document.querySelector("button");
+//   // btn.addEventListener("click", ()=>{
+//   //   //làm việc j đó
+//   // })
 
-// export default function TabButton({batky}) {
+//   //  Define function thực thi khi click vào button
+//   function handleClick() {
+//     alert("Nút bấm được click");
+//   }
+//   return (
+//     <li>
+//       {/* hàm handleClick sẽ thực thi khi onClick vào nút bấm (button) */}
+//       {/* lưu ý là truyền tên hàm (handleClick) ko truyền hàm thực thi "handleClick()" */}
+//       {/* children là text để hiện thị dữ ra màn hình khi bấm button */}
+//       <button onClick={handleClick}>{children}</button>
+//     </li>
+//   );
+// }
+
+// export default function TabButton({random}) {
 //     return (
 //       <li>
-//         <button>{batky}</button>
+//         <button>{random}</button>
 //       </li>
 //     );
 //   }
+
+// truyền hàm sự kiện từ component cha vào TabButton
+export default function TabButton({children, onSelect}) {
+  return (
+    <li>
+      <button onClick={onSelect}>{children}</button>
+    </li>
+  );
+}
