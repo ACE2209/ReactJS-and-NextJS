@@ -5,9 +5,7 @@ import { myData } from "../../data.js";
 import TabButton from "../components/TabButton.jsx";
 
 function Output() {
-  
-  let tabContent = "Nội dung được hiển thị";
-
+  console.log(`Output duoc goi ghi nhan f5`);
   // function handleSelect() {
   //   alert("Nút bấm được click");
   // }
@@ -17,9 +15,19 @@ function Output() {
   //   alert(`${selectedButton} được chọn`);
   // }
 
+  let tabContent = "Nội dung được hiển thị";
+
+  // function handleSelect(selectedButton) {
+  //   alert(`${selectedButton} được chọn`);
+  //   tabContent = selectedButton;
+  // }
+
+  console.log(`${tabContent} ngoai ham`);
+
   function handleSelect(selectedButton) {
     alert(`${selectedButton} được chọn`);
     tabContent = selectedButton;
+    console.log(`${tabContent} trong ham`);
   }
 
   return (
