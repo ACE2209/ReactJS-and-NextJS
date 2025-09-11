@@ -1,10 +1,21 @@
-import MainContent from "../components/MainContent.jsx";
-import Header from "../components/Header/Header.jsx";
+import MainContent from "./MainContent.jsx";
+import Header from "./Header/Header.jsx";
 import { myData } from "../../data.js";
 
-import TabButton from "../components/TabButton.jsx";
+import TabButton from "./TabButton.jsx";
+
+// Để câp nhật một thành phần chúng ta sẽ dùng useState (State nghĩa là trạng thái, trạng thái của dữ liệu thay đổi từ A -> B)
+// Tất cả thành phần bằng đầu bằng tiền tố use... được gọi là react Hook
+// Hook bản chất là hàm tính năng được react thiết kế sẵn
+import { useState } from "react";
 
 function Output() {
+  // khi sử dụng useState bắt buộc phải gọi tại cấp cao nhất của hàm thành phần
+  // ý là sẽ nằm ở ngoài chứ ko nằm trong các function nằm trong hàm Output
+  // không nằm trong cả if else 
+  // useState();
+  const [selectedTopic, setSelectedTopic] = useState("Vui lòng click vào nút");
+
   console.log(`Output duoc goi ghi nhan f5`);
   // function handleSelect() {
   //   alert("Nút bấm được click");
@@ -15,19 +26,20 @@ function Output() {
   //   alert(`${selectedButton} được chọn`);
   // }
 
-  let tabContent = "Nội dung được hiển thị";
+  // let tabContent = "Nội dung được hiển thị";
 
   // function handleSelect(selectedButton) {
   //   alert(`${selectedButton} được chọn`);
   //   tabContent = selectedButton;
   // }
 
-  console.log(`${tabContent} ngoai ham`);
+  // console.log(`${tabContent} ngoai ham`);
 
   function handleSelect(selectedButton) {
-    alert(`${selectedButton} được chọn`);
-    tabContent = selectedButton;
-    console.log(`${tabContent} trong ham`);
+    // alert(`${selectedButton} được chọn`);
+    // tabContent = selectedButton;
+    // console.log(`${tabContent} trong ham`);
+    setSelectedTopic(selectedButton);
   }
 
   return (
@@ -69,7 +81,8 @@ function Output() {
             {/* <TabButton>Button1</TabButton> */}
             {/* <TabButton random="Components"></TabButton> */}
           </menu>
-          {tabContent}
+          {/* {tabContent} */}
+          {selectedTopic}
         </section>
       </main>
     </>
