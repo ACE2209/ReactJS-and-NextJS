@@ -1,4 +1,4 @@
-import Output from "./components/7/Map";
+import Output from "./components/Theory/OutputButton";
 
 function App() {
   return (

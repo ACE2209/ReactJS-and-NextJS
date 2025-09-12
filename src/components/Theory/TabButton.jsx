@@ -45,11 +45,22 @@
 // }
 
 // thêm class active vào tabButton để biết chúng ta đang click vào nút nào
-export default function TabButton({children, onSelect, isSelected}) {
+// export default function TabButton({children, onSelect, isSelected}) {
+//   return (
+//     <li>
+//       {/* 3. Nếu isSelected true thì active còn false thì undefined */}
+//       <button className={isSelected ? "active" : undefined} onClick={onSelect}>
+//         {children}
+//       </button>
+//     </li>
+//   );
+// }
+
+// forwarding props
+export default function TabButton({children, isSelected, ...props}) {
   return (
     <li>
-      {/* 3. Nếu isSelected true thì active còn false thì undefined */}
-      <button className={isSelected ? "active" : undefined} onClick={onSelect}>
+      <button className={isSelected ? "active" : undefined} {...props}>
         {children}
       </button>
     </li>

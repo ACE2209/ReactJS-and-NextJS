@@ -91,7 +91,8 @@ function Output() {
           </ul>
         </section>
 
-        <section id="examples">
+        {/* <section id="examples"> */}
+        <section titleSection="Examples" id="examples" className="demo_class">
           <h2>Examples</h2>
           {/* thêm dòng này để ko xuống dòng <TabButton onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
  code này */}
@@ -116,13 +117,21 @@ function Output() {
             <TabButton
             // 1. kiểm tra xem nó có bằng chuỗi components ko ?
             // 2. Nếu bằng thì giá trị của nó true
+            //   isSelected={selectedTopic==="components"}
+            //   onSelect={()=>{handleSelect('components')}}>
+            //   Components
+            // </TabButton>
+            // <TabButton isSelected={selectedTopic==="jsx"} onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
+            // <TabButton isSelected={selectedTopic==="props"} onSelect={()=>{handleSelect('props')}}>Props</TabButton>
+            // <TabButton isSelected={selectedTopic==="state"} onSelect={()=>{handleSelect('state')}}>State</TabButton>
+
               isSelected={selectedTopic==="components"}
-              onSelect={()=>{handleSelect('components')}}>
+              onClick={()=>{handleSelect('components')}}>
               Components
             </TabButton>
-            <TabButton isSelected={selectedTopic==="jsx"} onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
-            <TabButton isSelected={selectedTopic==="props"} onSelect={()=>{handleSelect('props')}}>Props</TabButton>
-            <TabButton isSelected={selectedTopic==="state"} onSelect={()=>{handleSelect('state')}}>State</TabButton>
+            <TabButton isSelected={selectedTopic==="jsx"} onClick={()=>{handleSelect('jsx')}}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic==="props"} onClick={()=>{handleSelect('props')}}>Props</TabButton>
+            <TabButton isSelected={selectedTopic==="state"} onClick={()=>{handleSelect('state')}}>State</TabButton>
          
             {/* <TabButton>Button1</TabButton> */}
             {/* <TabButton random="Components"></TabButton> */}
