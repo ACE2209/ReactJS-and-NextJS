@@ -1,5 +1,5 @@
 // các cách để render dữ liệu động
-import "./App.css";
+import "../../App.css";
 
 let today = new Date().toLocaleDateString();
 let time = new Date().toLocaleTimeString();
@@ -17,6 +17,7 @@ function ranDomTitle() {
 
 function Header() {
   const title = wellCome[ranDomTitle()];
+
   return (
     <>
       <p>

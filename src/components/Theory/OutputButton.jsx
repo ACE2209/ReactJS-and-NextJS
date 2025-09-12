@@ -1,5 +1,7 @@
+import "../../index.css";
+
 import MainContent from "./MainContent.jsx";
-import Header from "./Header/Header.jsx";
+import Header from "../Header/Header.jsx";
 // import { myData } from "../../data.js";
 
 import TabButton from "./TabButton.jsx";
@@ -9,7 +11,7 @@ import TabButton from "./TabButton.jsx";
 // Hook bản chất là hàm tính năng được react thiết kế sẵn
 import { useState } from "react";
 
-import { myData, EXAMPLES } from "../../data.js";
+import { myData, EXAMPLES } from "../../../data.js";
 
 function Output() {
   // khi sử dụng useState bắt buộc phải gọi tại cấp cao nhất của hàm thành phần
@@ -17,7 +19,10 @@ function Output() {
   // không nằm trong cả if else
   // useState();
   // const [selectedTopic, setSelectedTopic] = useState("Vui lòng click vào nút");
-  const [selectedTopic, setSelectedTopic] = useState("jsx");
+  // const [selectedTopic, setSelectedTopic] = useState("jsx");
+
+  // Đôi khi ta chưa lựa chọn ta sẽ cho nó hiện thông báo click vào r mới hiện thông tin
+  const [selectedTopic, setSelectedTopic] = useState();
 
   console.log(`Output duoc goi ghi nhan f5`);
   // function handleSelect() {
@@ -38,6 +43,21 @@ function Output() {
 
   // console.log(`${tabContent} ngoai ham`);
 
+  let tabContent = <p>Vui lòng click vào nút để lựa chọn 1 chủ đề</p>;
+
+  //đây là code của cách 3 để hiện dữ liệu
+  if (selectedTopic) {
+    tabContent = (
+      <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].desc}</p>
+        <pre>
+          <code>{EXAMPLES[selectedTopic].code}</code>
+        </pre>
+      </div>
+    );
+  }
+
   function handleSelect(selectedButton) {
     // alert(`${selectedButton} được chọn`);
     // tabContent = selectedButton;
@@ -50,6 +70,7 @@ function Output() {
       <Header />
       <main>
         <section id="core-concepts">
+          {/* cách thêm dữ liệu cứng */}
           <h2>Khái niệm chính trong React</h2>
           <ul>
             <MainContent {...myData[0]} />
@@ -76,23 +97,72 @@ function Output() {
             <TabButton onSelect={handleSelect}>Props</TabButton>
             <TabButton onSelect={handleSelect}>State</TabButton> */}
 
-            <TabButton onSelect={()=>{handleSelect('components')}}>Components</TabButton>
+            {/* <TabButton onSelect={()=>{handleSelect('components')}}>Components</TabButton>
             <TabButton onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
             <TabButton onSelect={()=>{handleSelect('props')}}>Props</TabButton>
-            <TabButton onSelect={()=>{handleSelect('state')}}>State</TabButton>
+            <TabButton onSelect={()=>{handleSelect('state')}}>State</TabButton> */}
 
+            <TabButton
+            // 1. kiểm tra xem nó có bằng chuỗi components ko ?
+            // 2. Nếu bằng thì giá trị của nó true
+              isSelected={selectedTopic==="components"}
+              onSelect={()=>{handleSelect('components')}}>
+              Components
+            </TabButton>
+            <TabButton isSelected={selectedTopic==="jsx"} onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic==="props"} onSelect={()=>{handleSelect('props')}}>Props</TabButton>
+            <TabButton isSelected={selectedTopic==="state"} onSelect={()=>{handleSelect('state')}}>State</TabButton>
+         
             {/* <TabButton>Button1</TabButton> */}
             {/* <TabButton random="Components"></TabButton> */}
           </menu>
+
           {/* {tabContent} */}
+
           {/* {selectedTopic} */}
-          <div id="tab-content">
+
+          {/* <div id="tab-content">
             <h3>{EXAMPLES[selectedTopic].title}</h3>
             <p>{EXAMPLES[selectedTopic].desc}</p>
             <pre>
               <code>{EXAMPLES[selectedTopic].code}</code>
             </pre>
-          </div>
+          </div> */}
+
+          {/* cách 1: Dùng toán tử 3 ngôi */}
+          {/* để khi chưa click vào chưa hiện dữ liệu thì ta sẽ dùng toán tử ba ngôi để thực hiện  */}
+          {/* cú pháp toán tử "Biến = biểu thức 1 ? biểu thức 2 : biểu thức 3" */}
+          {/* Nếu biểu thức 1 đúng thì sẽ thực hiện biểu thức 2. ngược lại, nếu nó sai nó sẽ thực hiện biểu thức 3 */}
+          {/* {!selectedTopic ? (
+            <p>Vui lòng click vào nút để lựa chọn 1 chủ đề</p>
+          ) : (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].desc}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )} */}
+
+          {/* Cách 2: && - dùng toàn tử AND*/}
+          {/* ban đầu !selectedTopic là true */}
+          {/* Nếu useState ko có gì truyền vào thì in thẻ p */}
+          {/* {!selectedTopic && <p>Vui lòng click vào nút để lựa chọn 1 chủ đề</p>} */}
+
+          {/* còn khi click vào các mục rồi thì sẽ chuyền vào selectedTopic để hiện ra dữ liệu  */}
+          {/* {selectedTopic && (
+            <div id="tab-content">
+              <h3>{EXAMPLES[selectedTopic].title}</h3>
+              <p>{EXAMPLES[selectedTopic].desc}</p>
+              <pre>
+                <code>{EXAMPLES[selectedTopic].code}</code>
+              </pre>
+            </div>
+          )} */}
+
+          {/* Cách 3 : khai báo biến riêng biệt để code jsx clean hơn*/}
+          {tabContent}
         </section>
       </main>
     </>

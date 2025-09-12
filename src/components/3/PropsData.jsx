@@ -1,4 +1,4 @@
-// tối ưu hóa code của bài 2 bằng cách sử dụng file.js
+// tối ưu hóa code của bài 2 bằng cách sử dụng file data.js
 import { myData } from "../../../data.js";
 import PropTypes from "prop-types";
 
@@ -20,6 +20,7 @@ MainContent.propTypes = {
 };
 
 function Output() {
+  
   console.log(myData);
 
   return (
