@@ -5,6 +5,7 @@ import Header from "../Header/Header.jsx";
 // import { myData } from "../../data.js";
 
 import TabButton from "./TabButton.jsx";
+import Tabs from "./Tabs.jsx";
 
 // Để câp nhật một thành phần chúng ta sẽ dùng useState (State nghĩa là trạng thái, trạng thái của dữ liệu thay đổi từ A -> B)
 // Tất cả thành phần bằng đầu bằng tiền tố use... được gọi là react Hook
@@ -92,12 +93,12 @@ function Output() {
         </section>
 
         {/* <section id="examples"> */}
-        <section titleSection="Examples" id="examples" className="demo_class">
+        <section title="Examples" id="examples" className="demo_class">
           <h2>Examples</h2>
           {/* thêm dòng này để ko xuống dòng <TabButton onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
  code này */}
           {/* prettier-ignore */}
-          <menu>
+          {/* <menu> */}
             {/* Dùng props.children để hiển thị nội dung mà bạn đặt giữ cặp thẻ TabButton khi sử dụng component này */}
             {/* <TabButton>Components</TabButton>
             <TabButton>JSX</TabButton>
@@ -114,28 +115,34 @@ function Output() {
             <TabButton onSelect={()=>{handleSelect('props')}}>Props</TabButton>
             <TabButton onSelect={()=>{handleSelect('state')}}>State</TabButton> */}
 
-            <TabButton
+            {/* <TabButton
             // 1. kiểm tra xem nó có bằng chuỗi components ko ?
             // 2. Nếu bằng thì giá trị của nó true
-            //   isSelected={selectedTopic==="components"}
-            //   onSelect={()=>{handleSelect('components')}}>
-            //   Components
-            // </TabButton>
-            // <TabButton isSelected={selectedTopic==="jsx"} onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
-            // <TabButton isSelected={selectedTopic==="props"} onSelect={()=>{handleSelect('props')}}>Props</TabButton>
-            // <TabButton isSelected={selectedTopic==="state"} onSelect={()=>{handleSelect('state')}}>State</TabButton>
+              isSelected={selectedTopic==="components"}
+              onSelect={()=>{handleSelect('components')}}>
+              Components
+            </TabButton>
+            <TabButton isSelected={selectedTopic==="jsx"} onSelect={()=>{handleSelect('jsx')}}>JSX</TabButton>
+            <TabButton isSelected={selectedTopic==="props"} onSelect={()=>{handleSelect('props')}}>Props</TabButton>
+            <TabButton isSelected={selectedTopic==="state"} onSelect={()=>{handleSelect('state')}}>State</TabButton>
+          */}
+            {/* <TabButton>Button1</TabButton> */}
+            {/* <TabButton random="Components"></TabButton> */}
+          {/* </menu> */}
 
+          <Tabs button={
+            <>
+              <TabButton
               isSelected={selectedTopic==="components"}
               onClick={()=>{handleSelect('components')}}>
               Components
             </TabButton>
             <TabButton isSelected={selectedTopic==="jsx"} onClick={()=>{handleSelect('jsx')}}>JSX</TabButton>
             <TabButton isSelected={selectedTopic==="props"} onClick={()=>{handleSelect('props')}}>Props</TabButton>
-            <TabButton isSelected={selectedTopic==="state"} onClick={()=>{handleSelect('state')}}>State</TabButton>
-         
-            {/* <TabButton>Button1</TabButton> */}
-            {/* <TabButton random="Components"></TabButton> */}
-          </menu>
+            <TabButton isSelected={selectedTopic==="state"} onClick={()=>{handleSelect('state')}}>State</TabButton></>
+          }>
+          {tabContent}
+          </Tabs>
 
           {/* {tabContent} */}
 
@@ -182,7 +189,7 @@ function Output() {
           )} */}
 
           {/* Cách 3 : khai báo biến riêng biệt để code jsx clean hơn*/}
-          {tabContent}
+          {/* {tabContent} */}
         </section>
       </main>
     </>
